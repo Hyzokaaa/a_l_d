@@ -1,14 +1,42 @@
 # a_l_d
 
-# **Game Design Document**
+# **Documento de diseño de videojuego** 
+## Contexto
+El personaje se encuentra en un planeta donde debe recolectar recursos y diseñar estrategias para sobrevivir hasta que pueda escapar y regresar a su planeta de origen.
+## Mecanicas
+  * Recolección de objetos
+  * Crafteo
+  * Combate en tiempo real
+## Jugabilidad
+El movimiento se realiza con el teclado mientras que la rotación del personaje se controla con el mouse.
 
-## Context
- The character is on a planet where they must gather resources and devise strategies to survive until they can escape and return to their home planet.
-
- ## Mechanics
-  * Object collection
-  * Crafting
-  * Real-time combat.
-
-## Gameplay
-Movement is done with the keyboard while the character’s rotation is controlled by the mouse.
+<table>
+  <tr>
+    <td align = "center"> <strong>Acción</strong></td>
+    <td align = "center"> <strong>Input</strong></td>
+</tr>
+  <tr>
+    <td align="center">Movimiento</td>
+    <td align="center">(W,A,S,D)</td>
+  </tr>
+  <tr>
+    <td align="center">Rotación</td>
+    <td align="center">Mouse</td>
+  </tr>
+  <tr>
+    <td align="center">Interacción/Ataque Simple</td>
+    <td align="center">Mouse-Izquierdo</td>
+  </tr>
+  <tr>
+    <td align="center">Ataque Complejo</td>
+    <td align="center">Mouse-Derecho</td>
+  </tr>
+  <tr>
+    <td align="center">Abrir Mapa</td>
+    <td align="center">M</td>
+  </tr>
+    <tr>
+    <td align="center">Abrir Inventario</td>
+    <td align="center">I</td>
+  </tr>
+</table>
