@@ -76,13 +76,17 @@ public class MovCamera : MonoBehaviour
         {
             float rotation1 = rotationF1 / 3.4f;
             float rotation2 = rotationF2 / 3.4f;
-            if (mousePosition.x < Screen.width / 2)
+            if (mousePosition.x < screenWidthThird)
             {
                 desiredPosition = new Vector3(target.position.x - rotation1, distanceY, target.position.z + distanceZ + rotation2);
             }
-            else
+            else if(mousePosition.x > screenWidthThird * 2)
             {
                 desiredPosition = new Vector3(target.position.x + rotation1, distanceY, target.position.z + distanceZ + rotation2);
+            }
+            else
+            {
+                desiredPosition = new Vector3(target.position.x, distanceY, target.position.z + distanceZ);
             }
         }
         transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothTime);
