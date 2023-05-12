@@ -10,26 +10,28 @@ El personaje se encuentra en un planeta donde debe recolectar recursos y diseña
 ## Jugabilidad
 El movimiento se realiza con el teclado mientras que la rotación del personaje se controla con el mouse.
 
-<table>
+## <table>
   <tr>
     <td align = "center"> <strong>Acción</strong></td>
-    <td align = "center"> <strong>Input</strong></td>
+    <td align = "center"> <strong>Control</strong></td>
 </tr>
   <tr>
     <td align="center">Movimiento</td>
     <td align="center">(W,A,S,D)</td>
+    
   </tr>
   <tr>
-    <td align="center">Rotación</td>
-    <td align="center">Mouse</td>
+    <td align="center">Interacción/Ataque</td>
+    <td align="center">Ratón-Izquierdo</td>
   </tr>
   <tr>
-    <td align="center">Interacción/Ataque Simple</td>
-    <td align="center">Mouse-Izquierdo</td>
+    <td align="center">Apuntar</td>
+    <td align="center">Ratón-Derecho</td>
   </tr>
-  <tr>
-    <td align="center">Ataque Complejo</td>
-    <td align="center">Mouse-Derecho</td>
+   </tr>
+    <tr>
+    <td align="center">Rotar Inventario</td>
+    <td align="center">Rueda-Ratón</td>
   </tr>
   <tr>
     <td align="center">Abrir Mapa</td>
