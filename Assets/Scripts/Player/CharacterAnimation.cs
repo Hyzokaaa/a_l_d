@@ -5,6 +5,13 @@ using UnityEngine;
 public class CharacterAnimation : MonoBehaviour
 {
     public Animation anim;
+    [SerializeField]
+    private float walkSpeed;
+    [SerializeField]
+    private float diagnalSpeed;
+    [SerializeField]
+    private float backSpeed;
+
 
     void Start()
     {
@@ -17,6 +24,13 @@ public class CharacterAnimation : MonoBehaviour
             state.wrapMode = WrapMode.Loop;
             Debug.Log(anim.GetClipCount());
         }
+        anim["Walk"].speed = walkSpeed;
+        anim["Left"].speed = diagnalSpeed;
+        anim["Right"].speed = diagnalSpeed;
+        anim["BackLeft"].speed = diagnalSpeed;
+        anim["BackRight"].speed = diagnalSpeed;
+        anim["WalkB"].speed = backSpeed;
+
     }
 
     public void PlayAnimation(string animationName)

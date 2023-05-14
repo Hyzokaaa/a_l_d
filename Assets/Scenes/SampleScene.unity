@@ -499,6 +499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 448762196}
+  walkSpeed: 1.7
+  diagnalSpeed: 1.7
 --- !u!111 &448762196
 Animation:
   m_ObjectHideFlags: 0

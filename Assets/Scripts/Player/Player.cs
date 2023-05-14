@@ -36,6 +36,10 @@ public class Player : MonoBehaviour
         if (axisHorizontal == 0 && axisVertical == 0)
         {
             characterAnimation.PlayAnimation("Idle");
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                RotateToMouse();
+            }
             //animator.SetInteger("Walk", 0);
         }
         else

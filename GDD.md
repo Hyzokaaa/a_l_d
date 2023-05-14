@@ -8,9 +8,9 @@ El personaje se encuentra en un planeta donde debe recolectar recursos y diseña
   * Crafteo
   * Combate en tiempo real
 ## Jugabilidad
-El movimiento se realiza con el teclado mientras que la rotación del personaje se controla con el mouse.
+El movimiento se realiza con el teclado y el ratón. El personaje se mueve en ocho direcciones y rotará siempre en dirección movimiento salvo que se presione el botón derecho del ratón, en este caso el movimiento estará dirigido por el teclado y la rotación por el ratón.
 
-## <table>
+### <table>
   <tr>
     <td align = "center"> <strong>Acción</strong></td>
     <td align = "center"> <strong>Control</strong></td>
