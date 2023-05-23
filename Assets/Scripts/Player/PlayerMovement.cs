@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movimiento")]
     [SerializeField]
     private float walk_speed;
     [SerializeField]

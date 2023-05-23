@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Object : MonoBehaviour
+public class Material : Item, IMaterial
 {
     // Start is called before the first frame update
     void Start()
