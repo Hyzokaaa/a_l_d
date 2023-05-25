@@ -9,5 +9,8 @@ public abstract class Item : MonoBehaviour
     [SerializeField]
     private string description;
     [SerializeField]
-    private GameObject model;
+    private bool isMaterial;
+    [SerializeField]
+    private IBehaviour behaviour;
+
 }
