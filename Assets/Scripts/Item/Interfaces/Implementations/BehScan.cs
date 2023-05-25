@@ -6,6 +6,10 @@ public class BehScan : IBehaviour
 {
     public void Execute()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Debug.Log("Escaneo");
+        }
         throw new System.NotImplementedException();
     }
 }

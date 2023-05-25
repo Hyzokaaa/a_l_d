@@ -1,14 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BehAddStats : IBehaviour
+public class BeeBreakMineral : IBehaviour
 {
     public void Execute()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.Log("Subo Stats");
+            Debug.Log("Rompo un Mineral");
         }
         throw new System.NotImplementedException();
     }

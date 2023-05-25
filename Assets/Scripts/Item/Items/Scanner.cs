@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToolScanner : Tool
+public class Scanner : Tool
 {
     // Start is called before the first frame update
     void Start()
