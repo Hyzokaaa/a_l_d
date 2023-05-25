@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Item : MonoBehaviour
+public class Item : MonoBehaviour
 {
     [SerializeField]
     private string itemName;
@@ -13,4 +13,8 @@ public abstract class Item : MonoBehaviour
     [SerializeField]
     private IBehaviour behaviour;
 
+    public string ItemName { get => itemName; set => itemName = value; }
+    public string Description { get => description; set => description = value; }
+    public bool IsMaterial { get => isMaterial; set => isMaterial = value; }
+    public IBehaviour Behaviour { get => behaviour; set => behaviour = value; }
 }
