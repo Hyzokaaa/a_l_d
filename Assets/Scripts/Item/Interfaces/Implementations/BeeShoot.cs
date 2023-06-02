@@ -10,6 +10,5 @@ public class BeeShoot : IBehaviour
         {
             Debug.Log("Disparo");
         }
-        throw new System.NotImplementedException();
     }
 }

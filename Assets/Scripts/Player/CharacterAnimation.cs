@@ -16,7 +16,7 @@ public class CharacterAnimation : MonoBehaviour
     void Start()
     {
         // Asegúrate de asignar el componente Animation en el Inspector
-        //anim = GetComponent<Animation>();
+        anim = GetComponent<Animation>();
 
         // Establecer todas las animaciones para que se reproduzcan en bucle
         foreach (AnimationState state in anim)

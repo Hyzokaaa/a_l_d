@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
     private void initializateStart()
     {
         rb = transform.GetComponent<Rigidbody>();
-        characterAnimation = transform.GetComponent<CharacterAnimation>();
+        characterAnimation = transform.GetComponent<CharacterAnimation>() ;
     }
     void UpdateDirection(Vector3 direction)
     {

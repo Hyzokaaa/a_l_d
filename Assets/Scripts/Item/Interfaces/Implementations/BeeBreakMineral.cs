@@ -10,6 +10,5 @@ public class BeeBreakMineral : IBehaviour
         {
             Debug.Log("Rompo un Mineral");
         }
-        throw new System.NotImplementedException();
     }
 }

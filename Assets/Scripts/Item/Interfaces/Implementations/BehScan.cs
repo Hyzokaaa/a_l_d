@@ -10,6 +10,5 @@ public class BehScan : IBehaviour
         {
             Debug.Log("Escaneo");
         }
-        throw new System.NotImplementedException();
     }
 }

@@ -10,6 +10,5 @@ public class BehHit : IBehaviour
         {
             Debug.Log("Golpeo");
         }
-        throw new System.NotImplementedException();
     }
 }

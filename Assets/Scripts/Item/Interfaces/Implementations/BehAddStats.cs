@@ -10,6 +10,5 @@ public class BehAddStats : IBehaviour
         {
             Debug.Log("Subo Stats");
         }
-        throw new System.NotImplementedException();
     }
 }
