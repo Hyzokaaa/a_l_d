@@ -3,51 +3,88 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Inventory : MonoBehaviour
 {
-    public List<Item> items;
-    private int selectedItem = 0;
+    public Dictionary<int, Item> items;
+    private int slots = 10;
+    private int selectedItem = 1;
     private int selectedBehaviour = 0;
 
     private void Awake()
     {
-        items = new List<Item>();
+        items = new Dictionary<int, Item>();
     }
 
     public void AddItem(Item item)
     {
-        items.Add(item);
+        if (items.Count < slots)
+        {
+            for (int i = 1; i <= slots; i++)
+            {
+                if (!items.ContainsKey(i))
+                {
+                    items[i] = item;
+                    return;
+                }
+            }
+        }
     }
     public void RemoveItem(int index)
     {
-        items.RemoveAt(index);
+        items.Remove(index);
     }
     public void UseItem()
     {
-        if (items.Count == 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            print("no tengo item");
-            return;
-        }
-        if (items[selectedItem] is Tool)
-        {
-
-            if (selectedBehaviour == 0)
+            if (items.Count <= 0)
             {
-                items[selectedItem].Behaviour.Execute();
+                print("no tengo item");
+                return;
             }
-            else if(selectedBehaviour == 1)
+            if (!items.ContainsKey(selectedItem))
             {
-                Tool item = items[selectedItem] as Tool;
-                item.SecondBehaviour.Execute();
+                print("no tengo el item " + selectedItem + " asignado");
+                return;
             }
-        }
-        else if (items[selectedItem] is Weapon)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (items[selectedItem] is Tool)
             {
-                items[selectedItem].Behaviour.Execute();
+                if (selectedBehaviour == 0)
+                {
+                    items[selectedItem].Behaviour.Execute();
+                }
+                else if (selectedBehaviour == 1)
+                {
+                    Tool item = items[selectedItem] as Tool;
+                    item.SecondBehaviour.Execute();
+                }
+            }
+            else if (items[selectedItem] is Weapon)
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    items[selectedItem].Behaviour.Execute();
+                }
             }
         }
     }
+    public void RotateInventory()
+    {
+        float scrollValue = Input.GetAxis("Mouse ScrollWheel");
+        if (scrollValue != 0)
+        {
+            int intValue = Mathf.FloorToInt(scrollValue * 10);
+            selectedItem += intValue;
+            if (selectedItem < 1)
+            {
+                selectedItem = 5;
+            }
+            if (selectedItem > 5)
+            {
+                selectedItem = 1;
+            }
+            print(selectedItem);
+        }
+    }
+
     public void ChangeBehaviour()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -59,6 +96,7 @@ public class Inventory : MonoBehaviour
     private void Update()
     {
         ChangeBehaviour();
+        RotateInventory();
         UseItem();
     }
 }

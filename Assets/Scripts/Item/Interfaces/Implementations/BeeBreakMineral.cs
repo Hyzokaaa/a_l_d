@@ -6,9 +6,6 @@ public class BeeBreakMineral : IBehaviour
 {
     public void Execute()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Debug.Log("Rompo un Mineral");
-        }
+        Debug.Log("Rompo un Mineral");
     }
 }

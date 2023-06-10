@@ -6,9 +6,6 @@ public class BehAddStats : IBehaviour
 {
     public void Execute()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Debug.Log("Subo Stats");
-        }
+        Debug.Log("Subo Stats");
     }
 }
