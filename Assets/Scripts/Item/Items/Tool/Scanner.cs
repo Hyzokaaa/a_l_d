@@ -13,5 +13,6 @@ public class Scanner : Tool
         Behaviour = new BehScan();
         SecondBehaviour = new BehHit();
         Recipe = new List<Item> {new Uremia(), new Uremia(), new Quartz() };
+        Prefab = ItemPrefab.scannerPrefab;
     }
 }

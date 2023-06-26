@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Collectable
+  - UI_Inventory
+  - Hand
   layers:
   - Default
   - TransparentFX

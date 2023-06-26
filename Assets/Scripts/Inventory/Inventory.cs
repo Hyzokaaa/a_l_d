@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
     private int slots = 10;
     private int selectedItem = 1;
     private int selectedBehaviour = 0;
+    public event Action Changes;
 
     private void Awake()
     {
@@ -82,6 +83,7 @@ public class Inventory : MonoBehaviour
                 selectedItem = 1;
             }
             print(selectedItem);
+            Changes?.Invoke();
         }
     }
 
@@ -90,6 +92,7 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             selectedBehaviour = selectedBehaviour == 0 ? 1 : 0;
+            Changes?.Invoke();
             print(selectedBehaviour);
         }
     }
@@ -98,6 +101,21 @@ public class Inventory : MonoBehaviour
         ChangeBehaviour();
         RotateInventory();
         UseItem();
+    }
+    public int getBehaviour()
+    {
+        return selectedBehaviour;
+    }
+    public int getSelectedIndex()
+    {
+        return selectedItem;
+    }
+    public Item getSelectedItem()
+    {
+        if(items.TryGetValue(selectedItem, out var item)) { 
+        return items[selectedItem];
+        }
+        return null;    
     }
 }
 

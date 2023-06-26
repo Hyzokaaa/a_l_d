@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tool : Weapon
+public abstract class Tool : Weapon
 {
     [SerializeField]
     private IBehaviour secondBehaviour;
