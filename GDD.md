@@ -9,22 +9,25 @@
     Se podrán recolectar objetos en el entorno o como producto de alguna interacción con el mismo.
 
       #### Los objetos fundamenteles son: 
-      - Gelatina: Una sustancia viscosa que se encuentra en determinados biomas del planeta. Se utiliza en la fabricación de material sintético y otros materiales.
-      - Cuarzo: Es un mineral transparente y duro que se puede usar para hacer relojes, cristales o transmisores.
-      - Pirita: Es un mineral rojizo e inflamable que se puede usar para hacer chispas, armas o explosivos.
-      - Uremio: Es un mineral duro y metálico que se utiliza en la fabricación de aleaciones y herramientas.
-      - Biocelulosa: Es un objeto que se puede usar para hacer muebles, palos o papel. Se obtiene al cortar árboles o ramas de Xilofón.
-      - Geoda Espacial: Es un objeto que se puede usar para herramientas. Se obtiene al romper y pulir rocas espaciales.
-      - Piel: Es un tejido suave y elástico que cubre a los animales.
+      - **Gelatina**: Una sustancia viscosa que se encuentra en determinados biomas del planeta. Se utiliza en la fabricación de material sintético y otros materiales.
+      - **Cuarzo**: Es un mineral transparente y duro que se puede usar para hacer relojes, cristales o transmisores.
+      - **Pirita**: Es un mineral rojizo e inflamable que se puede usar para hacer chispas, armas o explosivos.
+      - **Uremio**: Es un mineral duro y metálico que se utiliza en la fabricación de aleaciones y herramientas.
+      - **Biocelulosa**: Es un objeto que se puede usar para hacer muebles, palos o papel. Se obtiene al cortar árboles o ramas de Xilofón.
+      - **Geoda Espacial**: Es un objeto que se puede usar para herramientas. Se obtiene al romper y pulir rocas espaciales.
+      - **Piel**: Es un tejido suave y elástico que cubre a los animales.
+      - **Agua Ácida**: se obtiene de estanques ácidos o lluvias ácidas. Se requiere un envase para almacenarla.
 
   * ### Crafteo:
       Se podrán generar a partir de otros objetos.
 
       #### Algunos de los objetos son:
+      - **Agua**: 1 unidad de agua ácida; se obtiene luego de procesar Agua Ácida proveniente de las lluvias o estanques ácidos.
       - **Material Sintético**: 1 unidad de gelatina; se obtiene al procesar y moldear la gelatina. Es un material ligero, resistente y versátil.
-      - **Cuchillo**: 1 unidad de uremio, 1 unidad de material sintético, 1 unidad de gelatina; se calienta el uremio y se le da forma de hoja afilada, se enrolla el material sintético alrededor del extremo opuesto al filo y se pega con la gelatina para hacer el mango, se enfría y se afila el cuchillo.
+      - **Aleación**: 1 unidad de uremio; se calienta el uremio hasta su punto de fusión y luego se enfría lentamente para formar una aleación. La aleación es un material compuesto resistente y duradero, conocido por su resistencia al desgaste y a la corrosión. Su versatilidad permite su uso en una amplia gama de aplicaciones, lo que lo convierte en un recurso valioso para cualquier misión de supervivencia. ¡Un verdadero testimonio del ingenio humano frente a la adversidad!
+      - **Cuchillo**: 2 unidad de uremio, 1 unidad de material sintético, 1 unidad de gelatina; se calienta el uremio y se le da forma de hoja afilada, se enrolla el material sintético alrededor del extremo opuesto al filo y se pega con la gelatina para hacer el mango, se enfría y se afila el cuchillo.
       - **Lanza**: 1 cuchillo, 1 unidad de biocelulosa, 1 material sintético; se corta una rama larga y recta de biocelulosa, se hace un agujero en uno de los extremos e inserta el cuchillo, se envuelve la piel alrededor de la unión y se ata para asegurarla.
-      - **Red**: 10 unidades de material sintético, 1 unidad de gelatina o 1 unidad de pegamento; se cortan varias tiras finas y flexibles de material sintético con el cuchillo o la lanza, se entrelazan entre sí formando una malla cuadrada o rectangular, se pegan los extremos con el pegamento o la gelatina, se hacen cuatro lazos en las esquinas y se cuelga de cuatro árboles o postes.
+      - **Red**: 10 unidades de material sintético, 1 unidad de pegamento; se cortan varias tiras finas y flexibles de material sintético con el cuchillo o la lanza, se entrelazan entre sí formando una malla cuadrada o rectangular, se pegan los extremos con el pegamento o la gelatina, se hacen cuatro lazos en las esquinas y se cuelga de cuatro árboles o postes.
       - **Trampa**: 1 red, 1 unidad de piel, 1 unidad de pirita; se coloca la red sobre un agujero en el suelo, se cubre el agujero con la piel y se esparce pirita sobre ella, se ata una cuerda o un hilo a uno de los lazos de la red y se esconde cerca del agujero con el otro extremo en la mano, se tira de la cuerda o el hilo cuando la presa pisa la piel para soltar la red y atraparla.
       - **Venda**: 1 unidad de gelatina, 1 unidad de material sintético; se calienta y se enfría la gelatina, se corta una tira larga y delgada de material sintético con el cuchillo o la lanza, se unta la gelatina sobre la tira para impregnarla, se enrolla la tira alrededor de la herida y se pega con el pegamento o la gelatina para fijarla.
       - **Pegamento**: 2 unidades de gelatina, 1 unidad de agua; se calienta la gelatina y se mezcla con el agua en un recipiente, se deja enfriar la mezcla hasta que se espese, se aplica el pegamento sobre las superficies que se quieren unir, se presionan las superficies juntas hasta que se sequen y se peguen.

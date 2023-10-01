@@ -15,16 +15,22 @@ public class ItemPickUp : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && targets.Count > 0)
+        Collect();
+    }
+
+    private void Collect()
+    {
+        if(Input.GetKeyDown(KeyCode.E) && targets.Count > 0)
         {
             target = targets[0];
-            Item spawn = target.GetComponent<ItemFactory>().Create();
-            print(spawn.ItemName);
-            inventory.AddItem(spawn);
-            targets.Remove(target);
+            ItemType itemType = target.GetComponent<CollectableType>().itemType;
+            Item collect = targets[0].GetComponent<ItemFactory>().Create(itemType);
+            inventory.AddItem(collect);
+            targets.RemoveAt(0);
             Destroy(target);
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Collectable"))

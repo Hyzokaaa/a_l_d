@@ -12,26 +12,36 @@ public class UI_Inventory : MonoBehaviour
 
     void Awake()
     {
-        selectedItem = null;
-        inventoryTM = GetComponentInChildren<TextMeshProUGUI>();
-        inventoryTM.enableWordWrapping = false;
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        inventoryTM = GetComponentInChildren<TextMeshProUGUI>();
+        selectedItem = null;
+        
+        inventoryTM.enableWordWrapping = false;
         inventory.Changes += UpdateUI;
-        inventory.Changes += SpawnSelectedItem;
+        //inventory.Changes += SpawnSelectedItem;
         UpdateUI();
     }
 
     void UpdateUI()
     {
-        inventoryTM.text = "Comportamiento: " + inventory.getBehaviour() +
-        "\nObjeto Seleccionado: " + inventory.getSelectedIndex();
+        if(inventory.GetSelectedItem() != null)
+        {
+            inventoryTM.text = "Comportamiento: " + inventory.GetBehaviour() +
+            "\nObjeto Seleccionado: " + inventory.GetSelectedIndex() +
+            "\n" + inventory.GetSelectedItem().ItemName;
+        }
+        else
+        {
+            inventoryTM.text ="Objeto Seleccionado: " + inventory.GetSelectedIndex() +
+             "\nNo Hay Item";
+        }
     }
     void SpawnSelectedItem()
     {
-        if (inventory.getSelectedItem() != null)
+        if (inventory.GetSelectedItem() != null)
         {
             Destroy(selectedItem);
-            selectedItem = Instantiate(inventory.getSelectedItem().Prefab, GameObject.FindGameObjectWithTag("Hand").transform);
+            selectedItem = Instantiate(inventory.GetSelectedItem().Prefab, GameObject.FindGameObjectWithTag("Hand").transform);
             selectedItem.transform.localPosition = Vector3.zero;
         }
         else

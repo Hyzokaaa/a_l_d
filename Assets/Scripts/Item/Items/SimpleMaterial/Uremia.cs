@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Uremia : Item
 {
     public Uremia()
     {
         ItemName = "Uremio";
-        Description = "Un mineral duro y metálico utilizado en la fabricación de aleaciones " +
+        Description = "Un mineral duro y metï¿½lico utilizado en la fabricaciï¿½n de aleaciones " +
             "y herramientas.";
         IsMaterial = true;
         Behaviour = null;

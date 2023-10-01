@@ -1,4 +1,4 @@
-﻿public enum SimpleMaterialType
+﻿public enum ItemType
 {
     Gelatin,
     Quartz,
@@ -6,30 +6,9 @@
     Uremia,
     Biocellulose,
     SpaceGeode,
-    Skin
-}
-
-public enum ComplexMaterialType
-{
+    Skin,
     SyntheticMaterial,
-    Alloy
-}
-
-public enum ToolType
-{
+    Alloy,
     Scanner,
-    Axe,
-    Drill,
     Knife
-}
-public enum WeaponType
-{
-    SwordSimple,
-    SwordSpecial,
-    BowSimple,
-    BowSpecial,
-    CrossbowSimple,
-    CrossbowSpecial,
-    RifleSimple,
-    RifleSpecial
 }

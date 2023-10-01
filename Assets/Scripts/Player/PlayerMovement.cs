@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,9 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float rotation_speed;
     private Rigidbody rb;
-
-    CharacterAnimation characterAnimation;
-
+    private AnimatorController animatorController;
     private Vector3 lastPosition;
 
     private void Start()
@@ -36,47 +35,37 @@ public class PlayerMovement : MonoBehaviour
 
         if (axisHorizontal == 0 && axisVertical == 0)
         {
-            characterAnimation.PlayAnimation("Idle");
+            animatorController.Idle();
+
             if (Input.GetKey(KeyCode.Mouse1))
             {
                 RotateToMouse();
             }
-            //animator.SetInteger("Walk", 0);
         }
         else
         {
             if (Input.GetKey(KeyCode.Mouse1))
             {
-                Debug.Log("estas presionando click derecho, ahora deberias moverte mas lento y rotan en direccion a la posicion del mause en pantalla");
+                Debug.Log("estas presionando click derecho, ahora deberias moverte mas lento y rotar en" +
+                    " direccion a la posicion del mouse en pantalla");
                 RotateToMouse();
                 UpdateDirection(direction);
                 currentSpeed = back_speed;
             }
             else if (Input.GetKey(KeyCode.LeftShift) && !(Input.GetKey(KeyCode.Mouse1)))
-            {
-                //animator.SetInteger("Walk", 2);
-                characterAnimation.PlayAnimation("Run");
+            {    
                 currentSpeed = run_speed;
+                animatorController.Run();
                 RotateToMovement(direction);
             }
             else
             {
-                characterAnimation.PlayAnimation("Walk");
-                //animator.SetInteger("Walk", 1);
+                animatorController.Walk();
                 RotateToMovement(direction);
             }
         }
-        rb.MovePosition(transform.position + direction * currentSpeed * Time.deltaTime);
+        rb.AddForce(direction * currentSpeed / 6, ForceMode.VelocityChange);
     }
-
-    private void ActivateWalkBack(Vector3 direction)
-    {
-        if ((Vector3.Angle(direction, transform.forward) <= 70.0f) == false)
-        {
-            //animator.SetInteger("Walk", -1);
-        }
-    }
-
     private void RotateToMouse()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -94,11 +83,10 @@ public class PlayerMovement : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotation_speed * Time.deltaTime);
     }
-
     private void initializateStart()
     {
         rb = transform.GetComponent<Rigidbody>();
-        characterAnimation = transform.GetComponent<CharacterAnimation>() ;
+        animatorController = transform.GetComponent<AnimatorController>();
     }
     void UpdateDirection(Vector3 direction)
     {
@@ -106,51 +94,43 @@ public class PlayerMovement : MonoBehaviour
 
         if (angle >= 157.5f || angle < -157.5f)
         {
-            characterAnimation.PlayAnimation("WalkB");
-            //animator.SetInteger("Walk", -1);
-            Debug.Log("atras");
+            animatorController.WalkBack();
+            //atras
         }
         else if (angle >= -157.5f && angle < -112.5f)
         {
-            characterAnimation.PlayAnimation("BackRight");
-            //animator.SetInteger("Walk", -3);
-            Debug.Log("atras derecha");
+            animatorController.WalkBackRight();
+            //atras derecha
         }
         else if (angle >= -112.5f && angle < -67.5f)
         {
-            characterAnimation.PlayAnimation("Right");
-            //animator.SetInteger("Walk", 8);
-            Debug.Log("derecha");
+            animatorController.WalkRight();
+            //derecha
         }
         else if (angle >= -67.5f && angle < -22.5f)
         {
-            characterAnimation.PlayAnimation("Walk");
-            //animator.SetInteger("Walk", 5);
-            Debug.Log("adelante derecha");
+            animatorController.WalkFrontRight();
+            //adelante derecha
         }
         else if (angle >= -22.5f && angle < 22.5f)
         {
-            characterAnimation.PlayAnimation("Walk");
-            //animator.SetInteger("Walk", 7);
-            Debug.Log("adelante");
+            animatorController.WalkSlow();
+            //adelante
         }
         else if (angle >= 22.5f && angle < 67.5f)
         {
-            characterAnimation.PlayAnimation("Walk");
-            //animator.SetInteger("Walk", 4);
-            Debug.Log("adelante izquierda");
+            animatorController.WalkFrontLeft();
+            //"adelante izquierda
         }
         else if (angle >= 67.5f && angle < 112.5f)
         {
-            characterAnimation.PlayAnimation("Left");
-            //animator.SetInteger("Walk", 9);
-            Debug.Log("izquierda");
+            animatorController.WalkLeft();
+            //izquierda
         }
         else if (angle >= 112.5f && angle < 157.5f)
         {
-            characterAnimation.PlayAnimation("BackLeft");
-            //animator.SetInteger("Walk", -2);
-            Debug.Log("atras izquierda");
+            animatorController.WalkBackLeft();
+            //atras izquierda
         }
     }
 }
