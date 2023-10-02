@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 public class SpaceGeode : Item
 {
-    public SpaceGeode()
+	public SpaceGeode() : base()
+	{
+		ItemName = "Geoda Espacial";
+		Description = "Un objeto utilizado para herramientas, obtenido al romper y pulir rocas" +
+			" espaciales.";
+		IsMaterial = true;
+		Behaviour = null;
+	}
+	public override List<Item> GenerateRecipe()
     {
-        ItemName = "Geoda Espacial";
-        Description = "Un objeto utilizado para herramientas, obtenido al romper y pulir rocas" +
-            " espaciales.";
-        IsMaterial = true;
-        Behaviour = null;
-        Recipe = null;
+        return null;
     }
 }
 

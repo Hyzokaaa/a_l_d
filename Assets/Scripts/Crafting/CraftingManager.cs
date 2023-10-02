@@ -9,12 +9,10 @@ public class CraftingManager : MonoBehaviour
 	public List<Item> craftingList;
 	[SerializeField]
 	private int index;
-	ItemFactory factory;
 	public ItemType[] crafts;
 	
 	void Start()
 	{
-		factory = gameObject.AddComponent<ItemFactory>();
 		craftingList = new();
 		InitalizeList();
 	}
@@ -41,7 +39,7 @@ public class CraftingManager : MonoBehaviour
 			else
 			{
 			{
-				print("NO PUDE CONSTRUIR ASERE");
+				// Queda pendiente evento en UI para mostrar error
 			}
 			}
 		}
@@ -87,7 +85,7 @@ public class CraftingManager : MonoBehaviour
 	{
 		foreach (ItemType craft in crafts)
 		{
-			craftingList.Add(factory.Create(craft));
+			craftingList.Add(ItemFactory.Create(craft));
 		}
 	}
 }
@@ -95,8 +93,6 @@ public class CraftingManager : MonoBehaviour
 craftingList: Es una lista de objetos que se pueden crear.
 
 index: Es el índice del objeto que se está creando actualmente.
-
-factory: Es una referencia a la fábrica de objetos, que es responsable de crear los objetos.
 
 crafts: Es una lista de los tipos de objetos que se pueden crear.
 

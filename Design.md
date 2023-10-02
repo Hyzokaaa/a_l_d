@@ -224,7 +224,7 @@ Esta seria la implementacion de UseItem() (pendiente a terminar de implementar)
 ## 7- Factory:
 Existe una clase ItemFactory que se encarga de crear un objeto en funcion de su ItemType
 
-    public Item Create(ItemType type)
+    public static Item Create(ItemType type)
     {
         switch (type)
         {

@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Paper : Item
 {
-	public Paper()
+	public Paper() : base()
 	{
 		ItemName = "Papel";
 		Description = "Se hierve la gelatina junto al agua, se agregan los fragmentos de biocelulosa cortada y se remueve hasta obtener una crema...";
 		IsMaterial = true;
 		Behaviour = null;
-		Recipe = new List<Item> {new Biocellulose(), new Gelatin(), new Water()};
+	}
+	public override List<Item> GenerateRecipe()
+	{
+		return new List<Item> 
+		{
+			ItemFactory.Create(ItemType.Biocellulose), 
+			ItemFactory.Create(ItemType.Gelatin), 
+			ItemFactory.Create(ItemType.Water)};
 	}
 }

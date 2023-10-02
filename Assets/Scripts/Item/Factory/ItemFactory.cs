@@ -1,36 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-public class ItemFactory : MonoBehaviour
+public class ItemFactory
 {
-	public Item Create(ItemType type)
+	private static readonly Dictionary<ItemType, Func<Item>> itemCreators = new Dictionary<ItemType, Func<Item>>
 	{
-		switch (type)
+		{ ItemType.AcidWater, () => new AcidWater() },
+		{ ItemType.Biocellulose, () => new Biocellulose() },
+		{ ItemType.Gelatin, () => new Gelatin() },
+		{ ItemType.MedicinalPlant, () => new MedicinalPlant()},
+		{ ItemType.Pyrite, () => new Pyrite() },
+		{ ItemType.Quartz, () => new Quartz() },
+		{ ItemType.Skin, () => new Skin() },
+		{ ItemType.SpaceGeode, () => new SpaceGeode() },
+		{ ItemType.Uremia, () => new Uremia() },
+		{ ItemType.Alloy, () => new Alloy() },
+		{ ItemType.Glue, () => new Glue() },
+		{ ItemType.Lens, () => new Lens() },
+		{ ItemType.Paper, () => new Paper() },
+		{ ItemType.SyntheticMaterial, () => new SyntheticMaterial() },
+		{ ItemType.Water, () => new Water() },
+		{ ItemType.Bandage, () => new Bandage() },	
+		{ ItemType.Binoculars, () => new Binoculars() },	
+		{ ItemType.Bonfire, () => new Bonfire() },	
+		{ ItemType.Bow, () => new Bow() },				
+		{ ItemType.Clock, () => new Clock() },	
+		{ ItemType.Container, () => new Container() },	
+		{ ItemType.Crossbow, () => new Crossbow() },	
+		{ ItemType.Explosive, () => new Explosive() },	
+		{ ItemType.Fuel, () => new Fuel() },	
+		{ ItemType.Hut, () => new Hut() },
+		{ ItemType.Infusion, () => new Infusion() },		
+		{ ItemType.Knife, () => new Knife() },
+		{ ItemType.Map, () => new Map() },	
+		{ ItemType.Net, () => new Net() },		
+		{ ItemType.Ointment, () => new Ointment() },	
+		{ ItemType.Pomade, () => new Pomade() },																																																				
+		{ ItemType.Scanner, () => new Scanner() },
+		{ ItemType.Shelter, () => new Shelter() },
+		{ ItemType.Spear, () => new Spear() },	
+		{ ItemType.ThermalInsulator, () => new ThermalInsulator()},
+		{ ItemType.Torch, () => new Torch()},
+		{ ItemType.Trap, () => new Trap()}															
+	};
+
+	public static Item Create(ItemType type)
+	{
+		if (itemCreators.TryGetValue(type, out var creator))
 		{
-			case ItemType.Gelatin:
-				return new Gelatin();
-			case ItemType.Quartz:
-				return new Quartz();
-			case ItemType.Pyrite:
-				return new Pyrite();
-			case ItemType.Uremia:
-				return new Uremia();
-			case ItemType.Biocellulose:
-				return new Biocellulose();
-			case ItemType.SpaceGeode:
-				return new SpaceGeode();
-			case ItemType.Skin:
-				return new Skin();
-			case ItemType.SyntheticMaterial:
-				return new SyntheticMaterial();
-			case ItemType.Alloy:
-				return new Alloy();
-			case ItemType.Scanner:
-				return new Scanner();
-			case ItemType.Knife:
-				return new Knife();
-			default:
-				return null;
+			return creator();
+		}
+		else
+		{
+			return null;
 		}
 	}
+	public static List<Item> CreateAll(ItemType item, int count)
+	{
+		List<Item> items = new();
+		for(int i = 0; i < count ; i++)
+		{
+			items.Add(ItemFactory.Create(item));
+		}
+		return items;
+	} 
 }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6342016388184652945}
   - component: {fileID: 9216520998480988251}
   - component: {fileID: 2097462785101624711}
-  - component: {fileID: 4201717446621706828}
   - component: {fileID: 5499798355914151991}
   m_Layer: 0
   m_Name: Uremia
@@ -99,18 +98,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4201717446621706828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7270874081825450382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d9742dc68eea7a4c97f1b0c93d73b7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5499798355914151991
 MonoBehaviour:
   m_ObjectHideFlags: 0

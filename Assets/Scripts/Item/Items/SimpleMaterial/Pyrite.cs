@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Pyrite : Item
 {
-    public Pyrite()
+	public Pyrite() : base()
+	{
+		ItemName = "Pirita";
+		Description = "Un mineral rojizo e inflamable utilizado para hacer chispas, armas" +
+			" y explosivos.";
+		IsMaterial = true;
+		Behaviour = null;
+	}
+	public override List<Item> GenerateRecipe()
     {
-        ItemName = "Pirita";
-        Description = "Un mineral rojizo e inflamable utilizado para hacer chispas, armas" +
-            " y explosivos.";
-        IsMaterial = true;
-        Behaviour = null;
-        Recipe = null;
+        return null;
     }
 }
 
