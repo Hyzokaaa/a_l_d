@@ -10,6 +10,10 @@ public class CraftingManager : MonoBehaviour
 	[SerializeField]
 	private int index;
 	public ItemType[] crafts;
+	private bool isCrafting = false;
+	[SerializeField]
+	private float timeForCrafting = 0.5f;
+
 	
 	void Start()
 	{
@@ -23,27 +27,32 @@ public class CraftingManager : MonoBehaviour
 	{
 		if(other.CompareTag("Player"))
 		{
-			Execute(other.GetComponent<Inventory>());
-
+			StartCoroutine(Execute(other.GetComponent<Inventory>()));
 		}
 	}
 
-	public bool Execute(Inventory inventoryCopy)
+	public IEnumerator Execute(Inventory inventoryCopy)
 	{
+		if(isCrafting)
+		{
+			yield break;
+		}
+    	isCrafting = true;
 		if(Input.GetKeyDown(KeyCode.F))
 		{
 			if(Craft(craftingList[index], inventoryCopy) && inventoryCopy.items.Count > 0)
 			{
-				return true;
+				yield return new WaitForSeconds(timeForCrafting);
 			}
 			else
 			{
 			{
 				// Queda pendiente evento en UI para mostrar error
+				print("No tienes elementos para craftear " + craftingList[index].ItemName);
 			}
 			}
 		}
-		return false;
+		isCrafting = false;
 	}
 
 	public bool Craft(Item itemToCraft, Inventory playerInventory)
