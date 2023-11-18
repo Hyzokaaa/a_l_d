@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class CraftingManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class CraftingManager : MonoBehaviour
 	private bool isCrafting = false;
 	[SerializeField]
 	private float timeForCrafting = 0.5f;
+	private bool isPlayerTryingToCraft = false;
 
 	
 	void Start()
@@ -20,7 +22,13 @@ public class CraftingManager : MonoBehaviour
 		craftingList = new();
 		InitalizeList();
 	}
-
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            isPlayerTryingToCraft = true;
+        }
+    }
 
 
 	void OnTriggerStay(Collider other)
@@ -32,64 +40,66 @@ public class CraftingManager : MonoBehaviour
 	}
 
 	public IEnumerator Execute(Inventory inventoryCopy)
-	{
-		if(isCrafting)
-		{
-			yield break;
-		}
-    	isCrafting = true;
-		if(Input.GetKeyDown(KeyCode.F))
-		{
-			if(Craft(craftingList[index], inventoryCopy) && inventoryCopy.items.Count > 0)
-			{
-				yield return new WaitForSeconds(timeForCrafting);
-			}
-			else
-			{
-			{
-				// Queda pendiente evento en UI para mostrar error
-				print("No tienes elementos para craftear " + craftingList[index].ItemName);
-			}
-			}
-		}
-		isCrafting = false;
-	}
+    {
+        if(isCrafting || !isPlayerTryingToCraft)
+        {
+            yield break;
+        }
+        isCrafting = true;
+        if(Craft(craftingList[index], inventoryCopy) && inventoryCopy.items.Count > 0)
+        {
+            yield return new WaitForSeconds(timeForCrafting);
+        }
+        else
+        {
+            print("No tienes elementos para craftear " + craftingList[index].ItemName);
+        }
+        isCrafting = false;
+        isPlayerTryingToCraft = false;
+    }
 
-	public bool Craft(Item itemToCraft, Inventory playerInventory)
-	{
-		if (!CanCraft(itemToCraft, playerInventory))
-		{
-			return false;
-		}
-		foreach (Item requiredItem in itemToCraft.Recipe)
-		{
-			playerInventory.RemoveWithType(requiredItem);
-		}
-		playerInventory.AddItem(itemToCraft);
-		return true;
-	}
-	public bool CanCraft(Item itemToCraft, Inventory playerInventory)
-	{
-		List<Item> inventoryCopy = playerInventory.items.Values.ToList();
-		foreach (Item recipeItem in itemToCraft.Recipe)
-		{
-			bool found = false;
-			for (int i = 0; i < inventoryCopy.Count; i++)
-			{
-				if (inventoryCopy[i].GetType() == recipeItem.GetType() || inventoryCopy[i].GetType().IsSubclassOf(recipeItem.GetType()))
-				{
-					inventoryCopy.RemoveAt(i);
-					found = true;
-					break;
-				}
-			}
-			if (!found)
-			{
-				return false;
-			}
-		}
-		return true;
-	}
+    public bool Craft(Item itemToCraft, Inventory playerInventory)
+    {
+        if (!CanCraft(itemToCraft, playerInventory))
+        {
+            return false;
+        }
+        foreach (Item requiredItem in itemToCraft.Recipe)
+        {
+            playerInventory.RemoveWithType(requiredItem);
+        }
+        playerInventory.AddItem(itemToCraft);
+        return true;
+    }
+public bool CanCraft(Item itemToCraft, Inventory playerInventory)
+    {
+        Dictionary<Type, int> inventoryCounts = GetInventoryCounts(playerInventory);
+        foreach (Item recipeItem in itemToCraft.Recipe)
+        {
+            Type itemType = recipeItem.GetType();
+            if (!inventoryCounts.ContainsKey(itemType) || inventoryCounts[itemType] <= 0)
+            {
+                return false;
+            }
+            inventoryCounts[itemType]--;
+        }
+        return true;
+    }
+
+    private Dictionary<Type, int> GetInventoryCounts(Inventory playerInventory)
+    {
+        Dictionary<Type, int> inventoryCounts = new Dictionary<Type, int>();
+        foreach (Item item in playerInventory.items.Values)
+        {
+            Type itemType = item.GetType();
+            if (!inventoryCounts.ContainsKey(itemType))
+            {
+                inventoryCounts[itemType] = 0;
+            }
+            inventoryCounts[itemType]++;
+        }
+        return inventoryCounts;
+    }
 	private void InitalizeList()
 	{
 		foreach (ItemType craft in crafts)
@@ -98,6 +108,7 @@ public class CraftingManager : MonoBehaviour
 		}
 	}
 }
+
 /*
 craftingList: Es una lista de objetos que se pueden crear.
 
